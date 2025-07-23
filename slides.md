@@ -5,7 +5,7 @@ theme: ../marcelkoch.net
 # like them? see https://unsplash.com/collections/94734566/slidev
 image: ./images/title.png
 # some information about your slides (markdown enabled)
-title: Ein Core, sie zu rosten
+title: One core to rust them all
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
@@ -43,10 +43,10 @@ layout: image
 layout: cover
 ---
 
-# Ein Core, sie zu rosten
+# One core to rust them all
 
 <v-clicks>
-Langlebige & flexible Cross-Platform-Applikationen
+Long-lasting & flexible cross-platform applications
 </v-clicks>
 
 ---
@@ -59,18 +59,18 @@ layout: image-right
 image: ./images/why-cross-plaform.png
 ---
 
-## Warum Cross-Platform?
+## Why Cross-Platform?
 
-- Webtechnologien dominieren
-- Native Apps weiterhin wichtig (z.B. Hardwarezugriffe, Performance)
+- Web technologies dominate
+- Native apps are still important (e.g., hardware access, performance)
 
-### Native Apps bieten...
+### Native apps offer...
 
-| Vorteile        | Nachteile                        |
+| Advantages      | Disadvantages                    |
 |-----------------|----------------------------------|
-| Performance     | spezifische Code Base            |
-| Look & Feel     | unterschiedliche Konzepte / APIs |
-| Hardwarezugriff | umständliche Installation        |
+| Performance     | specific code base               |
+| Look & feel     | different concepts / APIs        |
+| Hardware access | cumbersome installation          |
 
 
 ---
@@ -88,29 +88,29 @@ image: ./images/good-for-short-term-solutions.png
 clipPath: inset(0 0 0 0 round 0 100% 100% 0)
 ---
 
-## Gut für schnelle Ergebnisse
+## Good for quick results
 
-- Schnelle Ergebnisse durch (oft dynamische) Sprachen
-- Gut für kurzlebige Apps (1–2 Jahre)
-- Für langlebige Projekte (10+ Jahre) kritischer zu betrachten:
-  - Wird das Framework langfristig gepflegt?
-  - Reicht Support für Android/iOS/Web?
-  - Genügt Performance einer WebView?
-  - Wie gut ist die Testbarkeit?
-  - Finde ich langfristig Entwickler?
+- Fast results thanks to (often dynamic) languages
+- Good for short-lived apps (1–2 years)
+- For long-lived projects (10+ years) more critical:
+  - Will the framework be maintained long-term?
+  - Is support for Android/iOS/Web sufficient?
+  - Is the performance of a WebView enough?
+  - How good is the testability?
+  - Will I find developers in the long run?
 
 ---
 layout: image-right
 image: ./images/rust-core-2.png
 ---
 
-## Langlebigkeit durch separaten Core
+## Longevity through a separate core
 
-- UI-Technologie wandelt sich schnell
-- Idee: Trennung von Core & UI (z. B. hexagonale Architektur)
-- Core enthält Geschäftslogik und stabile Bestandteile
-- UI und Plattform-APIs als externe Ports
-- Beispiele für Ports: Kamera, Dateisystem, UI
+- UI technology changes quickly
+- Idea: separation of core & UI (e.g., hexagonal architecture)
+- Core contains business logic and stable components
+- UI and platform APIs as external ports
+- Examples of ports: camera, file system, UI
 
 ---
 layout: image-left
@@ -128,45 +128,45 @@ layout: image-right
 image: ./images/which-language.png
 ---
 
-## Wahl der Core-Sprache
+## Choice of core language
 
-- Zielplattformen: Android, iOS, Windows, macOS, Raspberry Pi
-- Wichtige Kriterien:
-  - Stabilität (wenig grundlegende Änderungen)
-  - Robustheit (gut wartbarer Code)
-  - Langlebigkeit (Unterstützung durch große Firmen)
-  - Flexibilität (Einsetzbarkeit auf vielen Plattformen inkl. Web)
+- Target platforms: Android, iOS, Windows, macOS, Raspberry Pi
+- Important criteria:
+  - Stability (few fundamental changes)
+  - Robustness (well maintainable code)
+  - Longevity (support from large companies)
+  - Flexibility (usable on many platforms including web)
 
 ---
 layout: image-right
 image: ./images/rust-for-core.png
 ---
 
-## Rust für den Core
+## Rust for the core
 
-- Wartbarer, performanter Core mit Rust
-- Plattformunterstützung: Desktop, Mobile, Web (via WASM), SBCs
-- Explizite Syntax und Compiler unterstützen langfristige Wartbarkeit
-- Lernkurve höher, kleinere Community als JS oder C
-- Wachsende Community, viele Migrationen von C nach Rust
-- Unterstützung durch Firmen wie AWS, Google, Meta, Microsoft
+- Maintainable, high-performance core with Rust
+- Platform support: desktop, mobile, web (via WASM), SBCs
+- Explicit syntax and compiler support long-term maintainability
+- Steeper learning curve, smaller community than JS or C
+- Growing community, many migrations from C to Rust
+- Supported by companies like AWS, Google, Meta, Microsoft
 
 ---
 
-## Architektur des Cores
+## Core architecture
 
-- Mehr Logik im Core = mehr Wiederverwendbarkeit
-- UI wird schlanker und reagiert auf ViewModel
+- More logic in the core = more reusability
+- UI becomes slimmer and reacts to the ViewModel
 
 <img src="/images/Architektur_1.png" />
 
 --
 
-## Architekturprinzip MVVM
+## MVVM architecture principle
 
-- ViewModel kapselt Anzeige-Daten
-- View liest ViewModel, UI bleibt zustandslos
-- Beispiel in Rust:
+- ViewModel encapsulates display data
+- View reads ViewModel, UI remains stateless
+- Example in Rust:
   ```rust
   ViewModel {
     name: String,
@@ -176,11 +176,11 @@ image: ./images/rust-for-core.png
 
 ---
 
-## UI-Aktionen als fachliche Aktionen (Domain Events)
+## UI actions as domain events
 
-- UI-Events wie `onClick` werden in fachliche Aktionen übersetzt
-- Aktionen sind die Eingangsschnittstelle in den Core
-- Beispiel in Rust (Speichern von E-Mail und Name):
+- UI events like `onClick` are translated into domain actions
+- Actions are the entry point into the core
+- Example in Rust (saving email and name):
   ```rust
   pub enum Actions {
     ChangeName(String),
@@ -191,10 +191,10 @@ image: ./images/rust-for-core.png
 
 ---
 
-## Zustand im Core
+## State in the core
 
-- Core verwaltet den Zustand, nicht die UI
-- Beispiel:
+- The core manages the state, not the UI
+- Example:
   ```rust
   struct State {
     name: String,
@@ -206,10 +206,10 @@ image: ./images/rust-for-core.png
 layout: two-cols-header
 ---
 
-## Implementierung des Core
+## Implementation of the core
 
-- Zentrale Struct `App` verarbeitet Aktionen und liefert ViewModel
-- Trennung von State, Actions und ViewModel
+- Central struct `App` processes actions and returns the ViewModel
+- Separation of state, actions, and ViewModel
 
 ::left::
 
@@ -257,11 +257,11 @@ impl Default for Core {
 layout: two-cols-header
 ---
 
-## Validierung im Core (1)
+## Validation in the core (1)
 
-- ViewModel enthält auch Fehlermeldungen
-- E-Mail-Validierung im Core
-- Beispiel: Prüfung auf `@`
+- ViewModel also contains error messages
+- Email validation in the core
+- Example: check for `@`
 
 ::left::
 ```rust {all|1-3|5-8|12} twoslash
@@ -296,9 +296,9 @@ pub struct ViewModel {
 layout: two-cols-header
 ---
 
-## Validierung im Core (2)
+## Validation in the core (2)
 
-- In `do_action()` und `render_view_model()`
+- In `do_action()` and `render_view_model()`
 
 ::left::
 
@@ -324,7 +324,7 @@ ViewModel {
             value: self.state.email.field.clone().into(),
             error: match &self.state.email.error {
                 None => None,
-                Some(_err) => Some("Keine valide E-Mail-Adresse".into()),
+                Some(_err) => Some("Not a valid email address".into()),
             },
         },
     }
@@ -337,12 +337,12 @@ image: ./images/crux.png
 
 ## Crux
 
-- Actions sind Events
-- State ist Model
+- Actions are events
+- State is model
 - App
-- Effect (Was raus geht)
-- Command (Erst Effect, dann Event)
-- Operation (Request-Payload)
+- Effect (what goes out)
+- Command (first effect, then event)
+- Operation (request payload)
 
 ---
 layout: image
@@ -418,8 +418,8 @@ layout: two-cols
 
 ## Core
 
-- Umschließt die App
-- Hält das Model versteckt
+- Wraps the app
+- Keeps the model hidden
 
 ```rust {all|1|3-4|6-14} twoslash
 let core: Arc<Core<EmailApp>> = Arc::new(Core::new());
@@ -442,8 +442,8 @@ for effect in effects {
 
 ## Bridge
 
-- Umschließt den Core
-- Kümmert sich um (De)serialisierung
+- Wraps the core
+- Handles (de)serialization
 
 ```rust {all|1-2|4|6-7|9-22} twoslash
 let serialized = 
@@ -614,8 +614,8 @@ layout: two-cols
 
 ## Tests
 
-- Die App direkt testen
-- Den Core innerhalb eines Integrationtests testen
+- Test the app directly
+- Test the core within an integration test
 
 ::right::
 
@@ -645,9 +645,9 @@ layout: image-right
 image: ./images/glue-tech.png
 ---
 
-## Anbindung an die Shell
+## Connecting to the shell
 
-Kleber für die Tapete
+Glue for the wallpaper
 
 - uniffi (& serde_generate)
 - wasm-pack
@@ -659,7 +659,7 @@ layout: two-cols
 ---
 
 ## uniFFI
-- Mit Macros (oder interface definition file) Funktionsschnittstellen in Fremdsprachen generieren
+- Generate function interfaces in foreign languages using macros (or interface definition file)
 
 ::right::
 
@@ -681,7 +681,7 @@ layout: two-cols
 ---
 
 ## serde_generate
-- Generierte komplexe Typen in Fremdsprachen
+- Generated complex types in foreign languages
 
 ::right::
 
@@ -712,7 +712,7 @@ layout: two-cols
 ---
 
 ## wasm-pack
-- Generiert WASM-Modul und JS-Glue-Code
+- Generates WASM module and JS glue code
 
 ::right::
 
@@ -739,7 +739,7 @@ layout: two-cols
 ---
 
 ## Flutter Rust Bridge
-- Rust-Code in Flutter-Projekt integrieren
+- Integrate Rust code into Flutter project
 
 ```rust [frb_cross_platform_core.rs]
 static CORE_CELL: OnceLock<EmailAppCore> = OnceLock::new();
@@ -779,22 +779,22 @@ layout: image-left
 image: ./images/customer.png
 ---
 
-# Es kam einmal ein Kunde
+# Once upon a time there was a customer
 
 - C
-  - War gesetzt
-  - Ist gesetzt
-- Worauf bauen wir die UI?
+  - Was set
+  - Is set
+- What do we build the UI with?
   - Flutter
   - React Native
 
 ---
 
-## Erfahrungen aus der Praxis
+## Practical experience
 
 - C
-- uniffi - c# ist nicht so einfach
-- Mehr als crux liefert
+- uniffi - C# is not so easy
+- More than crux provides
 - CI/CD
 
 ---
@@ -802,22 +802,22 @@ layout: image-right
 image: ./images/c-build.png
 ---
 
-# Um C zu unterstützen...
+# To support C...
 
-- bauen wir libs vor
-- unterstützen wir 11 targets
-- binden wir die libs in die `build.rs` mit eigenem Tool `grab-n-spread` ein
-- C-Integration an sich kein Problem
-- Cross compiling sehr wohl
-  - Windows: .lib falsche Berechnung
+- we pre-build libraries
+- we support 11 targets
+- we integrate the libs into `build.rs` with our own tool `grab-n-spread`
+- C integration itself is not a problem
+- Cross compiling very much so
+  - Windows: .lib wrong calculation
   - dockcross
   - osxcross
 
 ---
 
-## Mehr als crux mitbringt
+## More than crux provides
 
-- I18N (integriert im Kompilat)
+- I18N (integrated in the binary)
 - Labels
 - Logging
 
@@ -826,11 +826,11 @@ layout: image-right
 image: ./images/rust-for-core.png
 ---
 
-## Zusammenfassung
+## Summary
 
-- Architektur trennt langlebigen Core von kurzlebiger UI
-- Core übernimmt soviel wie möglich: Zustand, Logik, Validierung
-- Mögliche Lösung: Rust, crux, Flutter, FRB
+- Architecture separates long-lived core from short-lived UI
+- Core takes over as much as possible: state, logic, validation
+- Possible solution: Rust, crux, Flutter, FRB
 
 ---
 layout: image
