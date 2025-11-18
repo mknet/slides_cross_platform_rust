@@ -17,7 +17,7 @@ class: text-center
 drawings:
   persist: false
 # slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: none
+transition: slide
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 # open graph
@@ -61,6 +61,8 @@ image: ./images/why-cross-plaform.png
 
 ## Warum Cross-Platform?
 
+<v-clicks>
+
 - Webtechnologien dominieren
 - Native Apps weiterhin wichtig (z.B. Hardwarezugriffe, Performance)
 
@@ -72,15 +74,20 @@ image: ./images/why-cross-plaform.png
 | Look & Feel     | unterschiedliche Konzepte / APIs |
 | Hardwarezugriff | umständliche Installation        |
 
+</v-clicks>
 
 ---
 
 # Cross-platform frameworks
 
+<v-clicks>
+
 |              | **Flutter** | **React Native**        | Xamarin / MAUI | Kotlin Multiplattform | **Qt**         |
 |--------------|-------------|-------------------------|----------------|-----------------------|----------------|
 | **Language** | Dart        | JavaScript / TypeScript | C#             | Kotlin                | C++            |
 | **Company**  | Google      | Facebook                | Microsoft      | Jetbrains             | The Qt company |
+
+</v-clicks>
 
 ---
 layout: image-left-mask
@@ -90,6 +97,9 @@ clipPath: inset(0 0 0 0 round 0 100% 100% 0)
 
 ## Gut für schnelle Ergebnisse
 
+
+<v-clicks>
+
 - Schnelle Ergebnisse durch (oft dynamische) Sprachen
 - Gut für kurzlebige Apps (1–2 Jahre)
 - Für langlebige Projekte (10+ Jahre) kritischer zu betrachten:
@@ -98,6 +108,8 @@ clipPath: inset(0 0 0 0 round 0 100% 100% 0)
   - Genügt Performance einer WebView?
   - Wie gut ist die Testbarkeit?
   - Finde ich langfristig Entwickler?
+  
+</v-clicks>
 
 ---
 layout: image-right
@@ -106,11 +118,15 @@ image: ./images/rust-core-2.png
 
 ## Langlebigkeit durch separaten Core
 
+<v-clicks>
+
 - UI-Technologie wandelt sich schnell
 - Idee: Trennung von Core & UI (z. B. hexagonale Architektur)
 - Core enthält Geschäftslogik und stabile Bestandteile
 - UI und Plattform-APIs als externe Ports
 - Beispiele für Ports: Kamera, Dateisystem, UI
+
+</v-clicks>
 
 ---
 layout: image-left
@@ -119,9 +135,11 @@ image: ./images/hexagonal.png
 
 ## Ports and Adapters
 
+<v-clicks>
+
 - Render: Port
 - UI: Adapter
-
+</v-clicks>
 
 ---
 layout: image-right
@@ -130,12 +148,15 @@ image: ./images/which-language.png
 
 ## Wahl der Core-Sprache
 
+<v-clicks>
+
 - Zielplattformen: Android, iOS, Windows, macOS, Raspberry Pi
 - Wichtige Kriterien:
   - Stabilität (wenig grundlegende Änderungen)
   - Robustheit (gut wartbarer Code)
   - Langlebigkeit (Unterstützung durch große Firmen)
   - Flexibilität (Einsetzbarkeit auf vielen Plattformen inkl. Web)
+</v-clicks>
 
 ---
 layout: image-right
@@ -144,29 +165,38 @@ image: ./images/rust-for-core.png
 
 ## Rust für den Core
 
+<v-clicks>
+
 - Wartbarer, performanter Core mit Rust
 - Plattformunterstützung: Desktop, Mobile, Web (via WASM), SBCs
 - Explizite Syntax und Compiler unterstützen langfristige Wartbarkeit
 - Lernkurve höher, kleinere Community als JS oder C
 - Wachsende Community, viele Migrationen von C nach Rust
 - Unterstützung durch Firmen wie AWS, Google, Meta, Microsoft
+</v-clicks>
 
 ---
 
 ## Architektur des Cores
+
+<v-clicks>
 
 - Mehr Logik im Core = mehr Wiederverwendbarkeit
 - UI wird schlanker und reagiert auf ViewModel
 
 <img src="/images/Architektur_1.png" />
 
+</v-clicks>
 --
 
 ## Architekturprinzip MVVM
 
+<v-clicks>
+
 - ViewModel kapselt Anzeige-Daten
 - View liest ViewModel, UI bleibt zustandslos
 - Beispiel in Rust:
+
   ```rust
   ViewModel {
     name: String,
@@ -174,13 +204,18 @@ image: ./images/rust-for-core.png
   }
   ```
 
+</v-clicks>
+
 ---
 
 ## UI-Aktionen als fachliche Aktionen (Domain Events)
 
+<v-clicks>
+
 - UI-Events wie `onClick` werden in fachliche Aktionen übersetzt
 - Aktionen sind die Eingangsschnittstelle in den Core
 - Beispiel in Rust (Speichern von E-Mail und Name):
+
   ```rust
   pub enum Actions {
     ChangeName(String),
@@ -189,18 +224,23 @@ image: ./images/rust-for-core.png
   }
   ```
 
+</v-clicks>
 ---
 
 ## Zustand im Core
 
+<v-clicks>
+
 - Core verwaltet den Zustand, nicht die UI
 - Beispiel:
+
   ```rust
   struct State {
     name: String,
     email: String
   }
   ```
+</v-clicks>
 
 ---
 layout: two-cols-header
@@ -208,10 +248,16 @@ layout: two-cols-header
 
 ## Implementierung des Core
 
+<v-clicks>
+
 - Zentrale Struct `App` verarbeitet Aktionen und liefert ViewModel
 - Trennung von State, Actions und ViewModel
 
+</v-clicks>
+
 ::left::
+
+<v-clicks>
 
 ```rust {all|8-19|9-17|10-12|18} twoslash
 impl Core {
@@ -235,7 +281,11 @@ impl Core {
     }
 ```
 
+</v-clicks>
+
 ::right::
+
+<v-clicks>
 
 ```rust {all|2-5|3|all} twoslash
     pub fn render_view_model(&self) -> ViewModel {
@@ -253,15 +303,20 @@ impl Default for Core {
 }
 ```
 
+</v-clicks>
+
 ---
 layout: two-cols-header
 ---
 
 ## Validierung im Core (1)
 
+<v-clicks>
+
 - ViewModel enthält auch Fehlermeldungen
 - E-Mail-Validierung im Core
 - Beispiel: Prüfung auf `@`
+</v-clicks>
 
 ::left::
 ```rust {all|1-3|5-8|12} twoslash
@@ -298,7 +353,10 @@ layout: two-cols-header
 
 ## Validierung im Core (2)
 
+<v-clicks>
+
 - In `do_action()` und `render_view_model()`
+</v-clicks>
 
 ::left::
 
@@ -337,12 +395,15 @@ image: ./images/crux.png
 
 ## Crux
 
+<v-clicks>
+
 - Actions sind Events
 - State ist Model
 - App
 - Effect (Was raus geht)
 - Command (Erst Effect, dann Event)
 - Operation (Request-Payload)
+</v-clicks>
 
 ---
 layout: image
@@ -418,8 +479,11 @@ layout: two-cols
 
 ## Core
 
+<v-clicks>
+
 - Umschließt die App
 - Hält das Model versteckt
+</v-clicks>
 
 ```rust {all|1|3-4|6-14} twoslash
 let core: Arc<Core<EmailApp>> = Arc::new(Core::new());
@@ -442,8 +506,11 @@ for effect in effects {
 
 ## Bridge
 
+<v-clicks>
+
 - Umschließt den Core
 - Kümmert sich um (De)serialisierung
+</v-clicks>
 
 ```rust {all|1-2|4|6-7|9-22} twoslash
 let serialized = 
@@ -614,8 +681,11 @@ layout: two-cols
 
 ## Tests
 
+<v-clicks>
+
 - Die App direkt testen
 - Den Core innerhalb eines Integrationtests testen
+</v-clicks>
 
 ::right::
 
@@ -649,17 +719,24 @@ image: ./images/glue-tech.png
 
 Kleber für die Tapete
 
+<v-clicks>
+
 - uniffi (& serde_generate)
 - wasm-pack
 - Flutter Rust Bridge
 - FFI
+</v-clicks>
 
 ---
 layout: two-cols
 ---
 
 ## uniFFI
+
+<v-clicks>
+
 - Mit Macros (oder interface definition file) Funktionsschnittstellen in Fremdsprachen generieren
+</v-clicks>
 
 ::right::
 
@@ -681,7 +758,11 @@ layout: two-cols
 ---
 
 ## serde_generate
+
+<v-clicks>
+
 - Generierte komplexe Typen in Fremdsprachen
+</v-clicks>
 
 ::right::
 
@@ -712,7 +793,11 @@ layout: two-cols
 ---
 
 ## wasm-pack
+
+<v-clicks>
+
 - Generiert WASM-Modul und JS-Glue-Code
+</v-clicks>
 
 ::right::
 
@@ -739,7 +824,11 @@ layout: two-cols
 ---
 
 ## Flutter Rust Bridge
+
+<v-clicks>
+
 - Rust-Code in Flutter-Projekt integrieren
+</v-clicks>
 
 ```rust [frb_cross_platform_core.rs]
 static CORE_CELL: OnceLock<EmailAppCore> = OnceLock::new();
@@ -781,21 +870,27 @@ image: ./images/customer.png
 
 # Es kam einmal ein Kunde
 
+<v-clicks>
+
 - C
   - War gesetzt
   - Ist gesetzt
 - Worauf bauen wir die UI?
   - Flutter
   - React Native
+</v-clicks>
 
 ---
 
 ## Erfahrungen aus der Praxis
 
+<v-clicks>
+
 - C
 - uniffi - c# ist nicht so einfach
 - Mehr als crux liefert
 - CI/CD
+</v-clicks>
 
 ---
 layout: image-right
@@ -803,6 +898,8 @@ image: ./images/c-build.png
 ---
 
 # Um C zu unterstützen...
+
+<v-clicks>
 
 - bauen wir libs vor
 - unterstützen wir 11 targets
@@ -812,14 +909,18 @@ image: ./images/c-build.png
   - Windows: .lib falsche Berechnung
   - dockcross
   - osxcross
+</v-clicks>
 
 ---
 
 ## Mehr als crux mitbringt
 
+<v-clicks>
+
 - I18N (integriert im Kompilat)
 - Labels
 - Logging
+</v-clicks>
 
 ---
 layout: image-right
@@ -828,9 +929,12 @@ image: ./images/rust-for-core.png
 
 ## Zusammenfassung
 
+<v-clicks>
+
 - Architektur trennt langlebigen Core von kurzlebiger UI
 - Core übernimmt soviel wie möglich: Zustand, Logik, Validierung
 - Mögliche Lösung: Rust, crux, Flutter, FRB
+</v-clicks> 
 
 ---
 layout: image
