@@ -934,6 +934,7 @@ image: ./images/rust-for-core.png
 - Architektur trennt langlebigen Core von kurzlebiger UI
 - Core übernimmt soviel wie möglich: Zustand, Logik, Validierung
 - Mögliche Lösung: Rust, crux, Flutter, FRB
+- Artikelserie auf heise.de/developer: "heise developer rust marcel" duckduckgoen
 </v-clicks> 
 
 ---
